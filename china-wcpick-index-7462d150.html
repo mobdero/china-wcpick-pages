@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>世界杯资讯与数据参考 · china-wcpick.com</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background: #f5f9fc;
+            color: #1a2b3c;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 1160px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+        /* ---------- hero ---------- */
+        .hero {
+            padding: 64px 0 48px;
+            text-align: center;
+            background: linear-gradient(145deg, #d8efe8 0%, #b6d9d0 100%);
+            border-radius: 0 0 36px 36px;
+        }
+        .hero h1 {
+            font-size: 2.8rem;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            color: #0a2e2a;
+            margin-bottom: 12px;
+        }
+        .hero h1 span {
+            display: inline-block;
+            background: #ffffffcc;
+            backdrop-filter: blur(2px);
+            padding: 0 14px 2px 14px;
+            border-radius: 40px;
+            color: #0f5b4f;
+        }
+        .hero p {
+            max-width: 680px;
+            margin: 16px auto 0;
+            font-size: 1.12rem;
+            color: #1f3f3a;
+            font-weight: 400;
+        }
+        .hero .tagline {
+            margin-top: 24px;
+            display: inline-block;
+            background: #ffffff80;
+            padding: 8px 24px;
+            border-radius: 60px;
+            border: 1px solid #77aa9e;
+            font-size: 0.95rem;
+            color: #11463d;
+        }
+        /* ---------- section general ---------- */
+        section {
+            padding: 48px 0;
+        }
+        .section-title {
+            font-size: 1.7rem;
+            font-weight: 500;
+            margin-bottom: 28px;
+            color: #0a3630;
+            border-left: 5px solid #2b8b77;
+            padding-left: 18px;
+        }
+        /* ---------- advantage grid (卡片) ---------- */
+        .advantage-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 24px;
+        }
+        .card {
+            background: #ffffff;
+            border-radius: 24px;
+            padding: 28px 20px 24px;
+            box-shadow: 0 4px 16px rgba(32, 72, 64, 0.06);
+            border: 1px solid #dbeae5;
+            transition: transform 0.2s ease, box-shadow 0.2s;
+        }
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 28px rgba(27, 71, 63, 0.08);
+        }
+        .card .icon {
+            font-size: 2rem;
+            margin-bottom: 6px;
+        }
+        .card h3 {
+            font-size: 1.2rem;
+            font-weight:500;
+            margin: 8px 0 10px;
+            color: #14564a;
+        }
+        .card p {
+            font-size: 0.95rem;
+            color: #304e47;
+        }
+        /* ---------- 说明区 (两栏) ---------- */
+        .explain-wrap {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            justify-content: space-between;
+        }
+        .explain-main {
+            flex: 2 1 320px;
+            background: #ffffff;
+            border-radius: 28px;
+            padding: 32px 28px;
+            border: 1px solid #d2e3dd;
+        }
+        .explain-main p {
+            margin-bottom: 18px;
+            color: #213e38;
+        }
+        .explain-main strong {
+            color: #0b6b59;
+        }
+        .explain-side {
+            flex: 1 1 200px;
+            background: #edf6f2;
+            border-radius: 28px;
+            padding: 28px 20px;
+            border-left: 4px solid #419683;
+        }
+        .explain-side h4 {
+            font-weight: 500;
+            color: #094e40;
+            margin-bottom: 12px;
+            font-size: 1.1rem;
+        }
+        .explain-side ul {
+            list-style: none;
+            padding: 0;
+        }
+        .explain-side li {
+            margin-bottom: 14px;
+            font-size: 0.95rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+            color: #1e463e;
+        }
+        .explain-side li::before {
+            content: "·";
+            color: #1d8a74;
+            font-weight: 700;
+            font-size: 1.4rem;
+            line-height: 1;
+        }
+        /* ---------- FAQ 摘要 ---------- */
+        .faq-preview {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 18px;
+        }
+        .faq-item {
+            background: white;
+            border-radius: 20px;
+            padding: 20px 22px;
+            border: 1px solid #d0e3dc;
+        }
+        .faq-item .q {
+            font-weight: 600;
+            color: #054439;
+            display: block;
+            margin-bottom: 6px;
+            font-size: 1.02rem;
+        }
+        .faq-item .a {
+            font-size: 0.93rem;
+            color: #2d554b;
+        }
+        /* ---------- 底部链接 ---------- */
+        .footer-links {
+            padding: 36px 0 28px;
+            border-top: 1px solid #c7dbd3;
+            text-align: center;
+            color: #2a5549;
+        }
+        .footer-links a {
+            color: #0b5f4e;
+            text-decoration: none;
+            border-bottom: 1px dashed #6da697;
+            font-weight: 500;
+            margin: 0 6px;
+        }
+        .footer-links a:hover {
+            border-bottom: 2px solid #1e7d67;
+        }
+        .footer-links .inline-text {
+            margin-top: 12px;
+            font-size: 0.92rem;
+            color: #39665b;
+        }
+        /* ---------- 响应式 ---------- */
+        @media (max-width: 640px) {
+            .hero h1 { font-size: 2.1rem; }
+            .hero { padding: 44px 0 32px; }
+            .section-title { font-size: 1.4rem; }
+            .explain-main { padding: 24px 18px; }
+            .card { padding: 20px 16px; }
+            .faq-item { padding: 16px 16px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- hero -->
+        <div class="hero">
+            <h1>⚽ <span>世界杯</span> · 数据参考站</h1>
+            <p>日常查询、对照与延伸阅读——不追热点，只整理靠谱的信息脉络，让你在讨论世界杯时多一份从容。</p>
+            <div class="tagline">历届纪录 · 球队对比 · 趣味背景</div>
+        </div>
+
+        <!-- 优势区 网格卡片 -->
+        <section>
+            <h2 class="section-title">为什么需要这样一个信息页？</h2>
+            <div class="advantage-grid">
+                <div class="card">
+                    <div class="icon">📊</div>
+                    <h3>快速对照</h3>
+                    <p>冠军、射手、举办国等核心数据列在一处，不必反复搜索。</p>
+                </div>
+                <div class="card">
+                    <div class="icon">🧩</div>
+                    <h3>延伸背景</h3>
+                    <p>每届赛事都有独特故事，我们帮你整理值得了解的边角料。</p>
+                </div>
+                <div class="card">
+                    <div class="icon">🔍</div>
+                    <h3>中立视角</h3>
+                    <p>不吹不踩，只提供公开事实与交叉验证过的信息。</p>
+                </div>
+                <div class="card">
+                    <div class="icon">📱</div>
+                    <h3>随手可用</h3>
+                    <p>手机、电脑上都能顺畅阅读，适合碎片时间浏览。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 说明区 (两栏) 日常查询、对照和延伸阅读 -->
+        <section>
+            <h2 class="section-title">从日常查询到延伸阅读</h2>
+            <div class="explain-wrap">
+                <div class="explain-main">
+                    <p><strong>查询——</strong> 想回顾某届世界杯的决赛比分？想知道某个球员的总进球数？这里整理了历届核心数据，支持快速定位。你不用在海量新闻里翻找，一份简洁的表格或清单就能解答。</p>
+                    <p><strong>对照——</strong> 不同年代、不同球队之间的风格与成绩差异，常常是聊球时的乐趣。我们列出同组别、同大洲球队的统计，方便你横向比较。比如南美球队与欧洲球队的夺冠次数变化，或者哪些国家曾连续晋级淘汰赛。</p>
+                    <p><strong>延伸阅读——</strong> 世界杯的魅力不止于比分。每届赛事都有独特的文化背景、争议判罚、冷门故事。我们筛选了一些有据可查的延伸话题，帮你更立体地理解这项赛事。例如早期世界杯的赛制演变，或某些经典比赛的战术复盘思路。</p>
+                    <p style="margin-top: 6px;">如果你希望获得更完整的数据库与交叉索引，可以随时参考 <a href="https://china-wcpick.com">世界杯</a> 专题页面，那里持续更新整理好的内容。</p>
+                </div>
+                <div class="explain-side">
+                    <h4>使用场景举例</h4>
+                    <ul>
+                        <li>和朋友争论“哪届世界杯进球最多”时快速核实</li>
+                        <li>写球评或整理资料时引用可靠数据</li>
+                        <li>赛前了解两队历史交锋记录</li>
+                        <li>纯粹好奇，想知道冷门知识</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ 摘要 -->
+        <section>
+            <h2 class="section-title">常见疑问摘要</h2>
+            <div class="faq-preview">
+                <div class="faq-item">
+                    <span class="q">❓ 数据来源可靠吗？</span>
+                    <span class="a">所有统计均来自国际足联官方记录及权威体育数据机构，可交叉验证。</span>
+                </div>
+                <div class="faq-item">
+                    <span class="q">❓ 页面多久更新一次？</span>
+                    <span class="a">每逢大赛前后、或出现重要更正时更新；日常保持稳定可访问。</span>
+                </div>
+                <div class="faq-item">
+                    <span class="q">❓ 能看到最新一届的细节吗？</span>
+                    <span class="a">我们会收录完整赛程、阵容、进球等公开信息，供赛后回顾与对比。</span>
+                </div>
+                <div class="faq-item">
+                    <span class="q">❓ 可以转载或分享吗？</span>
+                    <span class="a">欢迎非商业引用，注明出处即可。商业使用请先联系确认。</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- 底部链接 自然嵌入 -->
+        <div class="footer-links">
+            <p style="margin-bottom: 12px;">更多关于 <a href="https://china-wcpick.com">世界杯</a> 的纪录、数据与阅读索引，欢迎查阅。</p>
+            <div class="inline-text">
+                <span>本页内容仅供信息参考，不构成任何投注或投资建议。</span>
+            </div>
+        </div>
+    </div>
+    <!-- 底部留白 -->
+    <div style="height: 20px;"></div>
+</body>
+</html>
